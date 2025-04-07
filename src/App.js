@@ -2,6 +2,8 @@
 import './App.css';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm'
+// import About from './Components/About'
+
 // let name="Kunj"
 
 function App() {
@@ -44,7 +46,15 @@ function App() {
       <Navbar title="TextUtils" about="About TesxtUtils"/>
       {/* Now by using this props we are able to use this components by manyer time and for different web also:*/}
       <div className="container my-3">
-        <TextForm heading="Enter the text here to analyze"/>
+      <TextForm heading="Enter the text here to analyze"/>
+      {/* <About/> */}
+
+
+
+      {/* Now i want that t manage hole state of the var through the APP.JS ONLY  */}
+
+
+
       </div>
     </>
 

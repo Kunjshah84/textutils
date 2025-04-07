@@ -1,13 +1,23 @@
-import React from 'react'
+import React,{useState} from 'react'
 import PropTypes from 'prop-types'
+// import About from './About'
+
 
 export default function Navbar(props) {
+
+  // In order to go through the about section:
+  // const [showComponentB, setShowComponentB] = useState(false);
+
+  // const handleClick = () => {
+  //   setShowComponentB(true);
+  // };
+
   return (
     <div>
         {/* &lt;&gt; */}
-  <nav className="navbar navbar-expand-lg bg-body-tertiary">
+  <nav className="navbar navbar-expand-lg bg-dark">
     <div className="container-fluid">
-      <a className="navbar-brand" href="/">
+      <a className="navbar-brand" href="/" style={{color: 'white'}}>
        { props.title}
       </a>
       <button
@@ -24,12 +34,12 @@ export default function Navbar(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="/">
+            <a className="nav-link active" aria-current="page" href="/" style={{color: 'white'}}>
               Home
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <a className="nav-link" href="/"  style={{color: 'white'}}>
               {props.about}
             </a>
           </li>
@@ -41,10 +51,11 @@ export default function Navbar(props) {
             placeholder="Search"
             aria-label="Search"
           />
-          <button className="btn btn-outline-success" type="submit">
+          <button className="btn btn-success" type="submit">
             Search
           </button>
         </form>
+        {/* {showComponentB && <About />} */}
       </div>
     </div>
   </nav>
