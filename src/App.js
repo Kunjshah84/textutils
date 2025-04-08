@@ -1,3 +1,9 @@
+
+
+// The git hub pages that means the pages hosted by the .github.io is not properly working with the router:
+// So we have to remove the hole part of the above and just need
+
+
 // import logo from './logo.svg';
 import { useState } from 'react';
 import './App.css';
