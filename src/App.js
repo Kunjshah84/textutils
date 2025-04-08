@@ -1,63 +1,107 @@
 // import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm'
-// import About from './Components/About'
+import Alert from './Components/Alert'
+// import { useFormState } from 'react-dom';
+import About from './Components/About'
+
+// In order to ues the react touter Dom have to import this
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
+// In the V6 update:
+import { Routes, Route } from 'react-router-dom';
 
 // let name="Kunj"
 
 function App() {
+
+  const [alert , setAlert]=useState(null)
+
+  // Making the set alert manualy:
+  const showAlert=(message , type )=>{
+    setAlert({
+      msg: message,
+      type : type
+    })
+
+    // Now wanted to dlt the alert after some time:
+    setTimeout(() => {
+      setAlert(null)
+    }, 1000);
+  }
+  const [mode , setMode] = useState('light')//this is the var which is going to tell us that the dark mode is enable or not?
+  const toggleMode=()=>{
+    if(mode === 'light'){
+      setMode('dark')
+      document.body.style.backgroundColor = '#212529'
+      showAlert("Dark mode has been implemented to the web" , "success")
+      document.title='TextUtils-DarkMode🖤'
+      // setTimeout(() => {
+      //   document.title = 'Best for the Text😎'
+      // }, 2000);
+      // setTimeout(() => {
+      //   document.title = 'made by kunj'
+      // }, 1500);
+    }
+    else{
+      setMode('light')
+      document.body.style.backgroundColor = 'white'
+      showAlert("Light mode has been implemented to the web" , "success")
+      document.title='TextUtils-LightMode🤍'
+    }
+  }
+
+
   return (
     // <>
-    // <h1>This is the illustration why we have to add the main tag to wrap the JSX code:</h1>
-    //   <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React with master kunj shah
-    //     </a>
-    //   </header>
-    // </div>
-    // </>
-    // <>
-    //   <nav>
-    //     <li>Home</li>
-    //     <li>about</li>
-    //     <li>contect number</li>
-    //   </nav>
-    //   <div className="contanier">
-    //     <h1>hello {name}</h1>
-    //     <p>
-    //       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quae, sequi possimus doloribus exercitationem excepturi a itaque praesentium unde iste, reprehenderit voluptates ut eligendi rem perferendis, dolore omnis magnam dicta.
-    //     </p>
+    //   <Navbar title="TextUtils" mode={mode} about="About" toggleMode={toggleMode}/>
+    //   <Alert alert={alert}/>
+    //   <div className="container my-3">
+    //   <Routes>
+
+
+    //   {/* Now by using this props we are able to use this components by manyer time and for different web also:*/}
+    //     {/* This is before we have took the react router Dom */}
+    //   {/* <TextForm heading="Enter the text here to analyze" mode={mode} showAlert={showAlert}/> */}
+
+    //   {/* This is the part of the switch */}
+
+    //   <Route path="/about" element={<About />} />
+    //   <Route path="/" element={<TextForm heading="Enter the text here to analyze" mode={mode} showAlert={showAlert}/>} />
+
+    //   {/* Now i want that t manage hole state of the var through the APP.JS ONLY  */}
+
+
+
+    // </Routes>
     //   </div>
-    //   <div className="blanck">lovely</div>
     // </>
-    // We have changed this hole code with the help of just single component!
-    <>
-      <Navbar title="TextUtils" about="About TesxtUtils"/>
-      {/* Now by using this props we are able to use this components by manyer time and for different web also:*/}
-      <div className="container my-3">
-      <TextForm heading="Enter the text here to analyze"/>
-      {/* <About/> */}
-
-
-
-      {/* Now i want that t manage hole state of the var through the APP.JS ONLY  */}
-
-
-
-      </div>
-    </>
-
+      <>
+        <Navbar title="TextUtils" mode={mode} about="About" toggleMode={toggleMode} />
+        <Alert alert={alert} />
+    
+        <div className="container my-3">
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/"
+              element={
+                <TextForm
+                  heading="Enter the text here to analyze"
+                  mode={mode}
+                  showAlert={showAlert}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </>
   );
 }
 
