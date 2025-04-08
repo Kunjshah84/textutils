@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+
 // import About from './About'
 
 
@@ -17,9 +19,9 @@ export default function Navbar(props) {
         {/* &lt;&gt; */}
   <nav className={`navbar navbar-expand-lg bg-${props.mode}`}>
     <div className="container-fluid">
-      <a className={`navbar-brand text-${props.mode === 'light' ? '#212529' : 'light'}`} href="/" >
+      <Link className={`navbar-brand text-${props.mode === 'light' ? '#212529' : 'light'}`} to="/" >
        { props.title}
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -34,14 +36,14 @@ export default function Navbar(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-          <a className={`nav-link text-${props.mode === 'light' ? '#212529' : 'light'}`} href="/">
+          <Link className={`nav-link text-${props.mode === 'light' ? '#212529' : 'light'}` } to="/">
             Home
-          </a>
+          </Link>
           </li>
           <li className="nav-item">
-            <a className={`nav-link text-${props.mode === 'light' ? 'dark' : 'light'}`} href="/">
+            <Link className={`nav-link text-${props.mode === 'light' ? 'dark' : 'light'}`} to="/about">
               {props.about}
-            </a>
+            </Link>
           </li>
         </ul>
         <form className="d-flex mx-2" role="search">

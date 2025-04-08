@@ -15,7 +15,14 @@ import About from './Components/About'
 //   Link
 // } from "react-router-dom";
 // In the V6 update:
-import { Routes, Route } from 'react-router-dom';
+// import { Routes, Route } from 'react-router-dom';
+
+// Just import this broh to achive the react router dom
+
+import {
+  Routes,
+  Route
+} from 'react-router-dom';
 
 // let name="Kunj"
 
@@ -88,9 +95,9 @@ function App() {
     
         <div className="container my-3">
           <Routes>
-            <Route path="/about" element={<About />} />
+            <Route exact path="/about" element={<About  mode={mode} showAlert={showAlert}/>} />
             <Route
-              path="/"
+              exact path="/"
               element={
                 <TextForm
                   heading="Enter the text here to analyze"
